@@ -1,0 +1,184 @@
+---
+title: "R Markdown: A Very Short Introduction"
+# date: "..."
+# author: "..."
+output:
+  pdf_document: 
+    number_sections: true
+---
+
+# Exports to pdf and looks like LaTeX!
+
+```{r include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE, 
+  fig.align = "center",  
+  out.width = '75%', 
+  warning = FALSE, 
+  message = FALSE
+)
+```
+
+# R Markdown 
+
+You can use R Markdown to
+
+- save and execute code
+- generate pdfs (like the lecture notes)
+- generate html files (like the website for the lecture notes)
+- make slides for presentations
+
+Installation: follow the instruction on https://bookdown.org/yihui/rmarkdown/installation.html
+
+Use ctrl + shift + k to knit your file (or click the Knit button in RStudio)
+
+Some References:
+
+1. R for Data Science: https://r4ds.had.co.nz/r-markdown.html
+
+2. R Cookbook: https://rc2e.com/rmarkdown
+
+3. R Markdown Cookbook: https://bookdown.org/yihui/rmarkdown-cookbook/
+
+4. The files for generating the notes and assignments (onQ -> R Markdown Examples)
+
+You may use R Markdown for your final project.
+
+# Basic formatting
+
+```
+# Level 1 Heading
+## Level 2 Heading
+### Level 3 Heading
+#### Level 4 Heading
+##### Level 5 Heading
+###### Level 6 Heading
+```
+
+## This is a subsection
+
+### This is a subsubsection
+
+## Formatting Text
+
+* `*italics*` gives *italics*
+* `**bold**` gives **bold**
+*  `` `code` `` gives `code`      
+
+See https://rc2e.com/rmarkdown#tab:commonMarkdown
+
+
+## List
+
+To create a bulleted list, start each line with an asterisk (*) like so:
+
+```
+* first item
+* second item
+* third item
+```
+
+Results:
+
+* first item
+* second item
+* third item
+
+To create a numbered list, start each line with 1. as follows:
+
+```
+1. first item
+1. second item
+1. third item
+```
+
+Results:
+
+1. first item
+1. second item
+1. third item
+
+```
+1. first item
+1. second item
+   a. subitem 1
+   a. subitem 2
+      i. sub-subitem 1
+      i. sub-subitem 2
+   a. subitem 2
+1. third item
+```
+
+Results:
+
+1. first item
+1. second item
+   a. subitem 1
+   a. subitem 2
+      i. sub-subitem 1
+      i. sub-subitem 2
+   a. subitem 2
+1. third item
+
+## Table
+
+```
+||$H_0$ is true|$H_1$ is true|
+|--|-----|----|
+|Reject $H_0$| Type I error | No Error|
+|Do not reject $H_0$| No Error | Type II Error|
+```
+
+Results:
+
+||$H_0$ is true|$H_1$ is true|
+|--|-----|----|
+|Reject $H_0$| Type I error | No Error|
+|Do not reject $H_0$| No Error | Type II Error|
+
+# R code 
+
+Two ways: inline and code chunk.
+
+Code Chunk:
+
+```{r}
+x <- 6
+sqrt(x)
+
+sqrt(x)
+
+sqrt(x)
+```
+
+Inline: The square root of `x` is `r sqrt(x)`. 
+
+## Controlling Which Code and Results Are Shown
+
+See: https://rc2e.com/rmarkdown#recipe-code-results
+
+# Graphics
+
+# Without echo = FALSE, the code will also come with the figure
+```{r echo = FALSE}
+library(ggplot2)
+library(gcookbook)
+ggplot(heightweight, aes(x = ageYear, y = heightIn, shape = sex, color = sex)) +
+  geom_point()
+```
+
+# Latex Equation
+
+R Markdown supports the LaTeX math equation notation.
+
+Reference: https://en.wikibooks.org/wiki/LaTeX/Mathematics
+
+Inline: $x + 2$
+
+Displayed Equation:
+
+\begin{equation*}
+  \vec{v}_{MAX} = \argmax_{\vec{u} \in \mathbb{R}^{n}} 
+  \bigg(S_{W}^{-1} S_B)
+\end{equation*}
+
